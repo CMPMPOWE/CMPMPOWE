@@ -1,0 +1,130 @@
+dec double : num -> num;
+--- double x <= 2 * x;
+
+dec treble : num -> num;
+--- treble x <= 3 * x;
+
+dec fourTimes : num -> num;
+--- fourTimes y <= double (double y);
+
+dec square : num -> num;
+--- square x <= x * x;
+
+dec quad : num -> num ;
+--- quad x <= square ( square x ) ;
+
+dec cube : num -> num;
+--- cube x <= x * x * x;
+
+
+
+!question 3
+dec doublesquare : num -> num;
+--- doublesquare x <= double(square x );
+
+! question 4
+
+dec lastdigit : num -> num;
+--- lastdigit n <= n mod 10;
+
+! Question 5
+dec penudigit : num -> num;
+--- penudigit x <= lastdigit( x div 10);
+
+!question 6
+dec iseven : num -> truval ;
+--- iseven x <= (x mod 2) = 0;
+
+
+!question 7
+dec islower, isupper, isdigit : char -> truval;
+--- isdigit c <=(c =< '9') and (c >= '0');
+--- islower c <=  (c =< 'z') and ( c >= 'a');
+--- isupper c <=  (c =< 'Z') and ( c >= 'A') ;
+
+
+
+dec none : char -> truval;
+--- none c <=( isdigit c or islower c or isupper c )  ;
+
+
+    
+dec uppercase, lowerCase : char -> char;
+--- uppercase c <= chr(ord c + 32); 
+
+
+
+!question 10;
+dec tax : num -> num;
+---tax n <= if n > 2000 
+		then(n - 2000) * 0.25 
+		else 0;
+
+!question 11;
+dec area : num # num -> num;
+--- area(w,l) <= w*l;
+
+!Question 12
+dec diff : num # num -> num;
+--- diff (a , b) <= if a >= b
+		then (a - b) 
+		else (b - a);
+
+!Question 13
+dec min : num # num -> num;
+--- min ( x , y) <=  if x >= y then y else x;
+
+! question 14
+dec add : num # num -> num;
+--- add (x , y) <= 10 * x + y;
+
+!Question 15
+infix cat : 4 ;
+dec cat : num # num -> num;
+--- x cat y <= add (x,y);
+
+
+
+! Task A part 1 : Using the functions lastdigit,penudigitand iseven (defined in Exercises 5-7) -
+! - define a function to determine whether the sum of the -
+! - last digit and the penultimate digit of a given number is even.
+
+!lastdigit (k div 10) is the penudigit
+
+!mod 10 lastdigit mod 10 then goes to x mod 2 if it even or not.
+
+
+
+!Task 1 
+
+dec task: num # num -> truval;
+--- task (x,y) <= iseven(lastdigit(x) + penudigit(y));
+
+dec taskOne:  num -> truval;
+--- taskOne x <= iseven(lastdigit x + penudigit x);
+
+!Task 2
+dec upperTolower: char -> char;
+--- upperTolower x  <=  if isupper(x) then chr (ord x + 32) else x;
+
+dec lowerToupper: char -> char;
+--- lowerToupper x  <=  if islower(x) then chr (ord x - 32) else x;
+
+dec swapupperlower: char -> char;
+--- swapupperlower x <= if isupper(x) then upperTolower(x) else lowerToupper(x);
+
+
+!question 6
+dec ismineven : num # num-> truval ;
+--- ismineven (x,y) <= iseven(min(x,y));
+
+
+
+infixr :: : 5;
+data list alpha == nil ++ alpha :: list alpha;
+infixr <> : 5;dec <> : list alpha # list alpha -> list alpha;
+--- [] <> ys <= ys;--- (x::xs) <> ys <= x::(xs <> ys);
+
+
+
+
